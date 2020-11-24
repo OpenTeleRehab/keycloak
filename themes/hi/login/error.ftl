@@ -12,7 +12,7 @@
             <div id="kc-error-message">
                 <div class="alert alert-danger">${message.summary?no_esc}</div>
                 <#if client?? && client.baseUrl?has_content>
-                    <p><a id="backToApplication" class="text-decoration-none" href="${url.loginUrl}">< ${kcSanitize(msg("backToApplication"))?no_esc}</a></p>
+                    <p><a id="backToApplication" class="text-decoration-none" href="${client.baseUrl}">< ${kcSanitize(msg("backToApplication"))?no_esc}</a></p>
                 </#if>
             </div>
         </div>
