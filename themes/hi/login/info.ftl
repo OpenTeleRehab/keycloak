@@ -7,7 +7,7 @@
     <#elseif section = "form">
         <div class="login-container">
             <div class="d-flex justify-content-center">
-                <h3>${msg("error")}</h3>
+                <h3>${msg("activateInfo")}</h3>
             </div>
 
             <div id="kc-info-message">
