@@ -21,8 +21,9 @@
     <body>
         <#nested "header">
         <div class="main">
-            <div class="d-flex justify-content-center align-items-center">
+            <div class="d-flex justify-content-center align-items-center flex-column">
                 <img class="logo" src="${url.resourcesPath}/img/logo.svg" alt="HI logo">
+                <h4 class="title">${(realm.name == 'hi-therapist')?then('Therapist Portal', 'Admin Portal') }</h4>
             </div>
             <div class="d-flex justify-content-center align-items-center">
                 <div class="block block-transparent block-rounded w-100 mb-0 overflow-hidden">
