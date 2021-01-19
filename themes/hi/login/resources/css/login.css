@@ -22,9 +22,13 @@ a {
 
 .logo {
     margin-top: 70px;
-    margin-bottom: 50px;
     width: 185px;
     height: 80px;
+}
+
+.title {
+    color: #FFFFFF;
+    margin-bottom: 50px;
 }
 
 .block {
