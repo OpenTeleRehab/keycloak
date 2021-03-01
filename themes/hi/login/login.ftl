@@ -5,7 +5,7 @@
     <#elseif section = "header">
         <link href="${url.resourcesPath}/img/favicon.png" rel="icon"/>
     <#elseif section = "form">
-        <div class="login-container">
+        <div class="login-container mb-5">
             <div class="d-flex justify-content-center">
                 <h3>${msg('login')}</h3>
             </div>
@@ -41,5 +41,6 @@
                 </form>
             </div>
         </#if>
+        </div>
     </#if>
 </@layout.registrationLayout>
