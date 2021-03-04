@@ -50,3 +50,20 @@ a {
 .btn-primary {
     background-color: #0077C8;
 }
+
+.banner-container {
+    position: relative;
+}
+
+.banner-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+#about {
+    min-height: 100vh;
+    background-color: #FFFFFF;
+}
