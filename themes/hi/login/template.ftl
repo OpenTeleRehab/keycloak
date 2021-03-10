@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 px-0">
-                    <div id="about"></div>
+                    <div id="about" class="d-flex flex-column"></div>
                 </div>
             </div>
         </div>
