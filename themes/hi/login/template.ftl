@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col-lg-6 px-5">
                     <div class="d-flex justify-content-center align-items-center flex-column">
-                        <img class="logo" src="${url.resourcesPath}/img/logo.svg" alt="HI logo">
+                        <img class="logo" src="${url.resourcesPath}/img/logo.svg" alt="OpenRehab logo">
                         <h4 class="title">${(realm.name == 'hi-therapist')?then('Therapist Portal', 'Admin Portal') }</h4>
                     </div>
                     <div class="d-flex justify-content-center align-items-center">
