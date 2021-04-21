@@ -18,21 +18,163 @@
         </#if>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
+            const redirect = function(url, params) {
+                url = url || window.location.href || '';
+                url = url.split('#')[0];
+                url =  url.match(/\?/) ? url : url + '?';
+
+                for ( var key in params ) {
+                    var re = RegExp( '[;&]' + key + '=?[^&;]*', 'g' );
+                    url = url.replace( re, '');
+                    url += '&' + key + '=' + params[key];
+                }
+                url = url.replace(/[;&]$/, '');
+                url = url.replace(/\?[;&]/, '?');
+                url = url.replace(/[;&]{2}/g, ';');
+                window.location.replace( url );
+            };
+
+            const translate = function(translations) {
+                let portalName = 'Admin Portal';
+
+                if ('${realm.name}' === 'hi-therapist') {
+                    item = translations.find(item => item.key === 'common.therapist_portal');
+                    portalName = item ? item.value : 'Therapist Portal';
+                } else {
+                    item = translations.find(item => item.key === 'common.admin_portal');
+                    portalName = item ? item.value : 'Admin Portal';
+                }
+                $('.title').text(portalName);
+
+                const loginTitle = translations.find(item => item.key === 'common.login');
+                loginTitle && $('.login-title').text(loginTitle.value);
+                loginTitle && $('.login-btn').attr('value', loginTitle.value);
+
+                const usernameLabel = translations.find(item => item.key === 'common.email');
+                usernameLabel && $('.username-label').text(usernameLabel.value);
+
+                const usernamePlaceholder = translations.find(item => item.key === 'placeholder.email');
+                usernamePlaceholder && $('#username').attr("placeholder", usernamePlaceholder.value);
+
+                const passwordLabel = translations.find(item => item.key === 'common.password');
+                passwordLabel && $('.password-label').text(passwordLabel.value);
+
+                const passwordPlaceholder = translations.find(item => item.key === 'placeholder.password');
+                passwordPlaceholder && $('#password').attr("placeholder", passwordPlaceholder.value);
+
+                const forgotPasswordLink = translations.find(item => item.key === 'common.forgot_password');
+                forgotPasswordLink && $('.forgot-password-link').text(forgotPasswordLink.value);
+
+                const passwordRecoveryTitle = translations.find(item => item.key === 'common.password-recovery');
+                passwordRecoveryTitle && $('.password-recovery-title').text(passwordRecoveryTitle.value);
+
+                const recoveryPasswordInstructionLabel = translations.find(item => item.key === 'common.recovery-password-instruction');
+                recoveryPasswordInstructionLabel && $('.recovery-password-instruction').text(recoveryPasswordInstructionLabel.value);
+
+                const recoverPassword = translations.find(item => item.key === 'common.recover_password');
+                recoverPassword && $('.btn-recover-password').attr('value', recoverPassword.value);
+
+                const loginLink = translations.find(item => item.key === 'common.login');
+                loginLink && $('.login-link').text('< ' + loginLink.value);
+
+                const updatePasswordTitle = translations.find(item => item.key === 'common.update-password');
+                updatePasswordTitle && $('.update-password-title').text(updatePasswordTitle.value);
+
+                const passwordNewLabel = translations.find(item => item.key === 'common.new-password');
+                passwordNewLabel && $('.password-new').text(passwordNewLabel.value);
+
+                const passwordNewPlaceholder = translations.find(item => item.key === 'placeholder.new-password');
+                passwordNewPlaceholder && $('#password-new').attr("placeholder", passwordNewPlaceholder.value);
+
+                const passwordConfirmLabel = translations.find(item => item.key === 'common.confirm-password');
+                passwordConfirmLabel && $('.password-confirm').text(passwordConfirmLabel.value);
+
+                const passwordConfirmPlaceholder = translations.find(item => item.key === 'placeholder.confirm-password');
+                passwordConfirmPlaceholder && $('#password-confirm').attr("placeholder", passwordConfirmPlaceholder.value);
+
+                const submit = translations.find(item => item.key === 'common.submit');
+                submit && $('.btn-submit').attr('value', submit.value);
+
+                const infoTitle = translations.find(item => item.key === 'common.information');
+                infoTitle && $('.info-title').text(infoTitle.value);
+
+                const backToApplicationLink = translations.find(item => item.key === 'common.back-to-application');
+                backToApplicationLink && $('.back-to-application').text('< ' + backToApplicationLink.value);
+
+                const proceedWithActionLink = translations.find(item => item.key === 'common.proceed-with-action');
+                proceedWithActionLink && $('.proceed-with-action').text('< ' + proceedWithActionLink.value);
+
+                const errorTitle = translations.find(item => item.key === 'common.error');
+                errorTitle && $('.error-title').text(errorTitle.value);
+            };
+
             $().ready(function () {
-                $.ajax({
-                    type: "GET",
-                    url: ('${realm.name}' === 'hi-therapist' ? '${properties.THERAPIST_APP_URL}' : '${properties.ADMIN_APP_URL}') + '/api/admin/page/static?url-segment=about-us&platform=' + ('${realm.name}' === 'hi-therapist' ? 'therapist_portal' : 'admin_portal'),
-                    crossDomain: true,
-                    success: function (data) {
-                        $('#about').html(data);
-                    },
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        console.log('xHR: ' + xhr);
-                        console.log('ajaxOption: ' + ajaxOptions);
-                        console.log('thrownError: ' + thrownError);
+                $(() => {
+                    let languages = [];
+                    let language = localStorage.getItem('hiPreferredLanguage');
+                    if (!language) {
+                        localStorage.setItem('hiPreferredLanguage', 1);
+                        language = 1;
                     }
-                   });
-                 });
+
+                    // Get about us page
+                    $.ajax({
+                        type: "GET",
+                        url: ('${realm.name}' === 'hi-therapist' ? '${properties.THERAPIST_APP_URL}' : '${properties.ADMIN_APP_URL}') + '/api/admin/page/static?url-segment=about-us&platform=' + ('${realm.name}' === 'hi-therapist' ? 'therapist_portal' : 'admin_portal') + '&lang=' + (language),
+                        crossDomain: true,
+                        success: function (data) {
+                            $('#about').html(data);
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            console.log('xHR: ' + xhr);
+                            console.log('ajaxOption: ' + ajaxOptions);
+                            console.log('thrownError: ' + thrownError);
+                        }
+                    });
+
+                    // Get translation
+                    $.ajax({
+                        type: "GET",
+                        url: ('${realm.name}' === 'hi-therapist' ? '${properties.THERAPIST_APP_URL}' : '${properties.ADMIN_APP_URL}') + '/api/admin/translation/i18n/admin_portal?lang=' + (language),
+                        crossDomain: true,
+                        success: function (data) {
+                            translate(data.data);
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            console.log('xHR: ' + xhr);
+                            console.log('ajaxOption: ' + ajaxOptions);
+                            console.log('thrownError: ' + thrownError);
+                        }
+                    });
+
+                    // Get languages
+                    $.ajax({
+                        type: "GET",
+                        url: ('${realm.name}' === 'hi-therapist' ? '${properties.THERAPIST_APP_URL}' : '${properties.ADMIN_APP_URL}') + '/api/admin/language',
+                        crossDomain: true,
+                        success: function (data) {
+                            if (data.data.length) {
+                                languages = data.data;
+                                $.each(data.data, function(key, item) {
+                                    $('#languageSelector').append($("<option></option>").attr("value", item.id).text(item.name));
+                                });
+                                $('#languageSelector').val(language);
+                            }
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            console.log('xHR: ' + xhr);
+                            console.log('ajaxOption: ' + ajaxOptions);
+                            console.log('thrownError: ' + thrownError);
+                        }
+                    });
+
+                    $('#languageSelector').on('change', function() {
+                        localStorage.setItem('hiPreferredLanguage', $(this).val());
+                        const languageObj = languages.find(item => item.id == $(this).val());
+                        redirect(location.href, { kc_locale: languageObj ? languageObj.code : 'en' });
+                    });
+                });
+            });
         </script>
     </head>
 
@@ -48,6 +190,9 @@
                     <div class="d-flex justify-content-center align-items-center">
                         <div class="block block-transparent block-rounded w-100 mb-0 overflow-hidden">
                             <div class="block-content bg-white">
+                                <div class="login-container pb-0">
+                                <select id="languageSelector" class="form-control form-control-sm w-auto float-right"></select>
+                                </div>
                                 <#nested "form">
                             </div>
                         </div>

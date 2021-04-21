@@ -7,7 +7,7 @@
     <#elseif section = "form">
         <div class="login-container">
             <div class="d-flex justify-content-center">
-                <h3>${msg("activateInfo")}</h3>
+                <h3 class="info-title">${msg("activateInfo")}</h3>
             </div>
 
             <div id="kc-info-message">
@@ -15,11 +15,11 @@
                 <#if skipLink??>
                 <#else>
                     <#if pageRedirectUri?has_content>
-                        <p><a class="text-decoration-none" href="${pageRedirectUri}">< ${kcSanitize(msg("backToApplication"))?no_esc}</a></p>
+                        <p><a class="text-decoration-none back-to-application" href="${pageRedirectUri}">< ${kcSanitize(msg("backToApplication"))?no_esc}</a></p>
                     <#elseif actionUri?has_content>
-                        <p><a class="text-decoration-none" href="${actionUri}">${kcSanitize(msg("proceedWithAction"))?no_esc}</a></p>
+                        <p><a class="text-decoration-none proceed-with-action" href="${actionUri}">${kcSanitize(msg("proceedWithAction"))?no_esc}</a></p>
                     <#elseif (client.baseUrl)?has_content>
-                        <p><a class="text-decoration-none" href="${client.baseUrl}">< ${kcSanitize(msg("backToApplication"))?no_esc}</a></p>
+                        <p><a class="text-decoration-none back-to-application" href="${client.baseUrl}">< ${kcSanitize(msg("backToApplication"))?no_esc}</a></p>
                     </#if>
                 </#if>
             </div>
