@@ -21,7 +21,7 @@
             $().ready(function () {
                 $.ajax({
                     type: "GET",
-                    url: ('${realm.name}' === 'hi-therapist' ? '${properties.THERAPIST_SERVICE_URL}' : '${properties.ADMIN_SERVICE_URL}') + '/page/static?url-segment=about-us&platform=' + ('${realm.name}' === 'hi-therapist' ? 'therapist_portal' : 'admin_portal'),
+                    url: ('${realm.name}' === 'hi-therapist' ? '${properties.THERAPIST_APP_URL}' : '${properties.ADMIN_APP_URL}') + '/api/admin/page/static?url-segment=about-us&platform=' + ('${realm.name}' === 'hi-therapist' ? 'therapist_portal' : 'admin_portal'),
                     crossDomain: true,
                     success: function (data) {
                         $('#about').html(data);
