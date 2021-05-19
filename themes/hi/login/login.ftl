@@ -32,7 +32,12 @@
                    </div>
                    <div class="form-group">
                        <label for="password" class="password-label">${msg("password")}</label>
-                       <input id="password" class="form-control" placeholder="${msg("enterPassword")}" type="password" name="password" tabindex="2">
+                       <div class="input-group mb-3">
+                         <input id="password" class="form-control" placeholder="${msg("enterPassword")}" type="password" name="password" tabindex="2">
+                         <div class="input-group-append" id="show-password">
+                            <span class="input-group-text" type="button"><i class="fas fa-eye" id="show-icon"></i></span>
+                         </div>
+                       </div>
                    </div>
                    <#if realm.resetPasswordAllowed>
                        <p><a class="forgot-password-link" href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a></p>
