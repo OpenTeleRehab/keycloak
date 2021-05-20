@@ -11,6 +11,7 @@
         <link rel="icon" href="${url.resourcesPath}/img/favicon.ico" />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <#if properties.styles?has_content>
             <#list properties.styles?split(' ') as style>
                 <link href="${url.resourcesPath}/${style}" rel="stylesheet" />
@@ -173,6 +174,19 @@
                         const languageObj = languages.find(item => item.id == $(this).val());
                         redirect(location.href, { kc_locale: languageObj ? languageObj.code : 'en' });
                     });
+                });
+
+                $('#show-password, #show-new-password, #show-confirm-password').on('click', function(e) {
+                    const input = $(e.currentTarget).siblings('input');
+                    const type = input.attr('type');
+                    const iconElement = $(e.currentTarget).find('i');
+                    if (type == 'password') {
+                        input.attr('type', 'text');
+                        iconElement.removeClass('fa-eye').addClass('fa-eye-slash');
+                    } else {
+                        input.attr('type', 'password');
+                        iconElement.removeClass('fa-eye-slash').addClass('fa-eye');
+                    }
                 });
             });
         </script>

@@ -30,16 +30,26 @@
 
                 <div class="form-group">
                     <label for="password-new" class="password-new">${msg("passwordNew")}</label>
-                    <input type="password" id="password-new" name="password-new" class="form-control"
-                       autofocus autocomplete="new-password"
-                    />
+                    <div class="input-group mb-3">
+                        <input type="password" id="password-new" name="password-new" class="form-control"
+                            autofocus autocomplete="new-password"
+                        />
+                        <div class="input-group-append" id="show-new-password">
+                            <span class="input-group-text" type="button"><i class="fas fa-eye" id="show-password-new-icon"></i></span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="password-confirm" class="password-confirm">${msg("passwordConfirm")}</label>
-                    <input type="password" id="password-confirm" name="password-confirm"
-                       class="form-control" autocomplete="new-password"
-                    />
+                     <div class="input-group mb-3">
+                        <input type="password" id="password-confirm" name="password-confirm"
+                            class="form-control" autocomplete="new-password"
+                        />
+                        <div class="input-group-append" id="show-confirm-password">
+                            <span class="input-group-text" type="button"><i class="fas fa-eye" id="show-password-confirm-icon"></i></span>
+                        </div>
+                    </div>
                 </div>
 
                 <#if isAppInitiatedAction??>
