@@ -174,6 +174,17 @@
                         const languageObj = languages.find(item => item.id == $(this).val());
                         redirect(location.href, { kc_locale: languageObj ? languageObj.code : 'en' });
                     });
+
+                    // Append Term&Condition and Privacy link
+                    $('#termConditionLink').attr('href', `${properties.THERAPIST_APP_URL}/api/admin/page/term-condition?lang=` + language);
+                    $('#privacyLink').attr('href', `${properties.THERAPIST_APP_URL}/api/admin/page/privacy?lang=` + language);
+
+                    // Enable/disable accept term and condition, privacy
+                    $('.custom-control-input').change(function() {
+                        const acceptTerm = $('#acceptTermAndCondition').prop('checked');
+                        const acceptPrivacy = $('#acceptPrivacy').prop('checked');
+                        $('#kc-accept').prop('disabled', !(acceptTerm && acceptPrivacy));
+                    });
                 });
 
                 $('#show-password, #show-new-password, #show-confirm-password').on('click', function(e) {
