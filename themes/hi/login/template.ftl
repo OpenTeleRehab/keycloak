@@ -234,7 +234,10 @@
                         <div class="block block-transparent block-rounded w-100 mb-0 overflow-hidden">
                             <div class="block-content bg-white">
                                 <div class="login-container pb-0">
-                                <select id="languageSelector" class="form-control form-control-sm w-auto float-right"></select>
+                                    <span class="float-right d-flex">
+                                        <i class="fas fa-globe fa-lg mr-3 mt-2"></i>
+                                        <select id="languageSelector" class="form-control form-control-sm w-auto"></select>
+                                    </span>
                                 </div>
                                 <#nested "form">
                             </div>
