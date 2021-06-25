@@ -107,6 +107,24 @@
 
                 const errorTitle = translations.find(item => item.key === 'common.error');
                 errorTitle && $('.error-title').text(errorTitle.value);
+
+                const termOfServiceLabel = translations.find(item => item.key === 'term.of.service');
+                termOfServiceLabel && $('.term-condition-title').text(termOfServiceLabel.value);
+
+                const agreeTermOfServiceLabel = translations.find(item => item.key === 'term.of.service.agree');
+                agreeTermOfServiceLabel && $('.agree-term-of-service').text(agreeTermOfServiceLabel.value);
+
+                 const agreePrivacyPolicyLabel = translations.find(item => item.key === 'privacy.policy.agree');
+                 agreePrivacyPolicyLabel && $('.agree-privacy-policy').text(agreePrivacyPolicyLabel.value);
+
+                 const privacyPolicyLink = translations.find(item => item.key === 'privacy.policy.detail.link');
+                 privacyPolicyLink && $('.privacy-policy-link').text(privacyPolicyLink.value);
+
+                 const termConditionLink = translations.find(item => item.key === 'term.of.service.detail.link');
+                 termConditionLink && $('.term-condition-link').text(termConditionLink.value);
+
+                 const accept = translations.find(item => item.key === 'term.of.service.accept');
+                 submit && $('.btn-accept').attr('value', accept.value);
             };
 
             $().ready(function () {
