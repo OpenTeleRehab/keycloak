@@ -1,0 +1,62 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+}
+
+label {
+    font-weight: 700;
+}
+
+h3 {
+    font-weight: 300;
+}
+
+a {
+    text-decoration: underline;
+}
+
+.main {
+    background-color: #0077C8;
+    min-height: 100vh;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.logo {
+    margin-top: 70px;
+    margin-bottom: 50px;
+    width: 185px;
+    height: 80px;
+}
+
+.title {
+    color: #FFFFFF;
+    margin-bottom: 50px;
+}
+
+.block {
+    max-width: 560px;
+}
+
+.login-container {
+    padding: 45px;
+}
+
+.login-container h3 {
+    padding-bottom: 25px;
+}
+
+.btn {
+    font-weight: 700;
+}
+
+.btn-primary {
+    background-color: #0077C8;
+}
+
+#banner {
+    min-height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-attachment: scroll, fixed;
+}
