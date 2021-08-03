@@ -130,7 +130,7 @@
                     // Get translation
                     $.ajax({
                         type: "GET",
-                        url: ('${properties.LIBRARY_APP_URL}') + '/api/admin/translation/i18n/admin_portal?lang=' + (language),
+                        url: ('${properties.LIBRARY_APP_URL}') + '/api/library/translation/i18n/admin_portal?lang=' + (language),
                         crossDomain: true,
                         success: function (data) {
                             translate(data.data);
@@ -145,7 +145,7 @@
                     // Get languages
                     $.ajax({
                         type: "GET",
-                        url: ('${properties.LIBRARY_APP_URL}') + '/api/admin/language',
+                        url: ('${properties.LIBRARY_APP_URL}') + '/api/library/language',
                         crossDomain: true,
                         success: function (data) {
                             if (data.data.length) {
@@ -170,8 +170,8 @@
                     });
 
                     // Append Term&Condition and Privacy link
-                    $('#termConditionLink').attr('href', `${properties.LIBRARY_APP_URL}/api/admin/page/term-condition?lang=` + language);
-                    $('#privacyLink').attr('href', `${properties.LIBRARY_APP_URL}/api/admin/page/privacy?lang=` + language);
+                    $('#termConditionLink').attr('href', `${properties.LIBRARY_APP_URL}/api/library/page/term-condition?lang=` + language);
+                    $('#privacyLink').attr('href', `${properties.LIBRARY_APP_URL}/api/library/page/privacy?lang=` + language);
 
                     // Enable/disable accept term and condition, privacy
                     $('.custom-control-input').change(function() {
