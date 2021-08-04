@@ -22,20 +22,9 @@ a {
     padding-left: 0;
 }
 
-.logo {
-    margin-top: 70px;
-    margin-bottom: 50px;
-    width: 185px;
-    height: 80px;
-}
-
-.title {
-    color: #FFFFFF;
-    margin-bottom: 50px;
-}
-
 .block {
-    max-width: 560px;
+    max-width: 548px;
+    margin-top: 50px;
 }
 
 .login-container {
