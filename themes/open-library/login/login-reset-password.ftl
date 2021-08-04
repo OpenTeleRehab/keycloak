@@ -17,7 +17,7 @@
                         <input type="text" id="username" name="username" class="form-control" autofocus/>
                     </div>
                     <input class="btn btn-primary btn-block btn-recovery-password" type="submit" value="${msg("recoverPassword")}"/>
-                    <p class="mt-4"><a class="text-decoration-none login-link" href="${client.baseUrl}">< ${kcSanitize(msg("login"))?no_esc}</a></p>
+                    <p class="mt-4"><a class="text-decoration-none login-link" href="${client.baseUrl}/admin">< ${kcSanitize(msg("login"))?no_esc}</a></p>
                 </div>
             </form>
         </div>
