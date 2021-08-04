@@ -202,7 +202,7 @@
         <div class="main container-fluid">
             <div class="row no-gutters">
                 <div class="col-lg-6" id="banner"></div>
-                <div class="col-lg-6 d-flex justify-content-center align-items-center flex-column">
+                <div class="col-lg-6 d-flex justify-content-center align-items-center flex-column p-5">
                     <img width="186" src="${url.resourcesPath}/img/logo.svg" alt="OpenTeleRehab logo">
                     <div class="block block-transparent block-rounded w-100 overflow-hidden">
                         <div class="block-content bg-white">
