@@ -44,8 +44,15 @@ a {
 }
 
 #banner {
-    min-height: 100vh;
+    height: 468px;
     background-position: center;
     background-size: cover;
     background-attachment: scroll, fixed;
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    #banner {
+        height: 100vh;
+    }
 }
