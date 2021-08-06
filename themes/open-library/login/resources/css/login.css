@@ -45,6 +45,7 @@ a {
 
 #banner {
     height: 468px;
+    min-height: auto;
     background-position: center;
     background-size: cover;
     background-attachment: scroll, fixed;
@@ -53,6 +54,7 @@ a {
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
     #banner {
-        height: 100vh;
+        height: auto;
+        min-height: 100vh;
     }
 }
