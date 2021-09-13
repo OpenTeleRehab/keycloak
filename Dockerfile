@@ -1,6 +1,6 @@
-FROM jboss/keycloak:11.0.2
+FROM jboss/keycloak:11.0.3
 
-COPY extensions /opt/jboss/keycloak/standalone/deployments
+COPY extensions/custom-api/target/keycloak-api-extensions-1.0.jar /opt/jboss/keycloak/standalone/deployments
 COPY themes /opt/jboss/keycloak/themes
 
 RUN sed -i -e 's/<web-context>auth<\/web-context>/<web-context>keycloak\/auth<\/web-context>/' /opt/jboss/keycloak/standalone/configuration/standalone.xml
