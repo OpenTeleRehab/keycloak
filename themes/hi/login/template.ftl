@@ -114,17 +114,26 @@
                 const agreeTermOfServiceLabel = translations.find(item => item.key === 'term.of.service.agree');
                 agreeTermOfServiceLabel && $('.agree-term-of-service').text(agreeTermOfServiceLabel.value);
 
-                 const agreePrivacyPolicyLabel = translations.find(item => item.key === 'privacy.policy.agree');
-                 agreePrivacyPolicyLabel && $('.agree-privacy-policy').text(agreePrivacyPolicyLabel.value);
+                const agreePrivacyPolicyLabel = translations.find(item => item.key === 'privacy.policy.agree');
+                agreePrivacyPolicyLabel && $('.agree-privacy-policy').text(agreePrivacyPolicyLabel.value);
 
-                 const privacyPolicyLink = translations.find(item => item.key === 'privacy.policy.detail.link');
-                 privacyPolicyLink && $('.privacy-policy-link').text(privacyPolicyLink.value);
+                const privacyPolicyLink = translations.find(item => item.key === 'privacy.policy.detail.link');
+                privacyPolicyLink && $('.privacy-policy-link').text(privacyPolicyLink.value);
 
-                 const termConditionLink = translations.find(item => item.key === 'term.of.service.detail.link');
-                 termConditionLink && $('.term-condition-link').text(termConditionLink.value);
+                const termConditionLink = translations.find(item => item.key === 'term.of.service.detail.link');
+                termConditionLink && $('.term-condition-link').text(termConditionLink.value);
 
-                 const accept = translations.find(item => item.key === 'term.of.service.accept');
-                 submit && $('.btn-accept').attr('value', accept.value);
+                const accept = translations.find(item => item.key === 'term.of.service.accept');
+                submit && $('.btn-accept').attr('value', accept.value);
+
+                const loginErrorMessage = $('.login-error-message').text();
+                let errorLogin = translations.find(item => item.key === 'login.error');
+                if (loginErrorMessage.includes('Incorrect')) {
+                    errorLogin = translations.find(item => item.key === 'login.error_message.invalid_user');
+                } else if (loginErrorMessage.includes('timed out')) {
+                    errorLogin = translations.find(item => item.key === 'login.error_message.time_out');
+                }
+                errorLogin && $('.login-error-message').text(errorLogin.value);
             };
 
             $().ready(function () {

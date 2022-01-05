@@ -17,7 +17,7 @@
                     <div class="alert alert-${message.type}">${message.summary?no_esc}</div>
                  </#if>
                  <#if message.type = 'error'>
-                    <div class="alert alert-danger">${message.summary?no_esc}</div>
+                    <div class="alert alert-danger login-error-message">${message.summary?no_esc}</div>
                  </#if>
                  <#if message.type = 'info'>
                     <div class="alert alert-${message.type}">${message.summary?no_esc}</div>
