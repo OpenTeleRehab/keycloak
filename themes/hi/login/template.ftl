@@ -252,6 +252,10 @@
                             </div>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-center align-items-center mb-4 mt-1">
+                        <span class="footer-title">Powered by:</span>
+                        <img class="footer-logo" src="${url.resourcesPath}/img/hi-logo.png" alt="OpenTeleRehab logo">
+                    </div>
                 </div>
                 <div class="col-lg-6 px-0">
                     <div id="about" class="d-flex flex-column"></div>
