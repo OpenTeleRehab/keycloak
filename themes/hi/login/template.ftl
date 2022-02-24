@@ -36,9 +36,10 @@
             };
 
             const translate = function(translations) {
+                let realmName = '${realm.name}';
                 let portalName = 'Admin Portal';
 
-                if ('${realm.name}' === 'hi-therapist') {
+                if (realmName.includes('therapist')) {
                     item = translations.find(item => item.key === 'common.therapist_portal');
                     portalName = item ? item.value : 'Therapist Portal';
                 } else {
@@ -138,6 +139,9 @@
 
             $().ready(function () {
                 $(() => {
+                    let url = new URL(window.location.href);
+                    let origin = url.origin.replace('therapist', 'admin');
+                    let realmName = '${realm.name}';
                     let languages = [];
                     let language = localStorage.getItem('hiPreferredLanguage');
                     if (!language) {
@@ -148,7 +152,7 @@
                     // Get about us page
                     $.ajax({
                         type: "GET",
-                        url: ('${realm.name}' === 'hi-therapist' ? '${properties.THERAPIST_APP_URL}' : '${properties.ADMIN_APP_URL}') + '/api/admin/page/static?url-segment=about-us&platform=' + ('${realm.name}' === 'hi-therapist' ? 'therapist_portal' : 'admin_portal') + '&lang=' + (language),
+                        url: origin + '/api/admin/page/static?url-segment=about-us&platform=' + (realmName.includes('therapist') ? 'therapist_portal' : 'admin_portal') + '&lang=' + (language),
                         crossDomain: true,
                         success: function (data) {
                             $('#about').html(data);
@@ -163,7 +167,7 @@
                     // Get translation
                     $.ajax({
                         type: "GET",
-                        url: ('${realm.name}' === 'hi-therapist' ? '${properties.THERAPIST_APP_URL}' : '${properties.ADMIN_APP_URL}') + '/api/admin/translation/i18n/admin_portal?lang=' + (language),
+                        url: (realmName.includes('therapist') ? '${properties.THERAPIST_APP_URL}' : '${properties.ADMIN_APP_URL}') + '/api/admin/translation/i18n/admin_portal?lang=' + (language),
                         crossDomain: true,
                         success: function (data) {
                             translate(data.data);
@@ -178,7 +182,7 @@
                     // Get languages
                     $.ajax({
                         type: "GET",
-                        url: ('${realm.name}' === 'hi-therapist' ? '${properties.THERAPIST_APP_URL}' : '${properties.ADMIN_APP_URL}') + '/api/admin/language',
+                        url: (realmName.includes('therapist') ? '${properties.THERAPIST_APP_URL}' : '${properties.ADMIN_APP_URL}') + '/api/admin/language',
                         crossDomain: true,
                         success: function (data) {
                             if (data.data.length) {
