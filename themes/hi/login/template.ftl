@@ -200,6 +200,34 @@
                         }
                     });
 
+                    // Get color scheme
+                    $.ajax({
+                        type: "GET",
+                        url: origin + '/api/admin/color-scheme',
+                        crossDomain: true,
+                        success: function (data) {
+                            if (data.data) {
+                                colorScheme = data.data;
+                                $('.main').css('background-color', colorScheme.primary_color);
+                                $('.btn-primary').css({
+                                    'background-color' : colorScheme.primary_color,
+                                    'border-color': colorScheme.primary_color
+                                });
+                                $('a').css('color', colorScheme.primary_color);
+                                $("a").mouseover(function() {
+                                  $(this).css('color', colorScheme.secondary_color);
+                                }).mouseout(function() {
+                                  $(this).css('color', colorScheme.primary_color);
+                                });
+                            }
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            console.log('xHR: ' + xhr);
+                            console.log('ajaxOption: ' + ajaxOptions);
+                            console.log('thrownError: ' + thrownError);
+                        }
+                    });
+
                     $('#languageSelector').on('change', function() {
                         localStorage.setItem('hiPreferredLanguage', $(this).val());
                         const languageObj = languages.find(item => item.id == $(this).val());
