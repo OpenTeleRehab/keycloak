@@ -1,0 +1,13 @@
+target/*
+!target/keycloak-events-0.47-SNAPSHOT.jar
+*~
+*.DS_Store
+tmp/*
+data/*
+dependency-reduced-pom.xml
+.classpath
+NOTES
+.factorypath
+.project
+.settings/
+bin
