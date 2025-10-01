@@ -5,3 +5,5 @@
  ```dillinger
 docker cp <jar_file_path> keycloak:/opt/jboss/keycloak/standalone/deployments/
 ```
+## API Endpoints
+* PUT 'http://localhost:8090/auth/realms/demo/userapi-rest/users/{user_id}/execute-actions-email'
