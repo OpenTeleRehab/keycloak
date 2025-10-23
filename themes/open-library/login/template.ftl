@@ -1,4 +1,4 @@
-<#macro registrationLayout bodyClass="" displayInfo=false displayMessage=true>
+<#macro registrationLayout bodyClass="" displayInfo=false displayMessage=true displayRequiredFields=false>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
@@ -103,17 +103,60 @@
                 const agreeTermOfServiceLabel = translations.find(item => item.key === 'term.of.service.agree');
                 agreeTermOfServiceLabel && $('.agree-term-of-service').text(agreeTermOfServiceLabel.value);
 
-                 const agreePrivacyPolicyLabel = translations.find(item => item.key === 'privacy.policy.agree');
-                 agreePrivacyPolicyLabel && $('.agree-privacy-policy').text(agreePrivacyPolicyLabel.value);
+                const agreePrivacyPolicyLabel = translations.find(item => item.key === 'privacy.policy.agree');
+                agreePrivacyPolicyLabel && $('.agree-privacy-policy').text(agreePrivacyPolicyLabel.value);
 
-                 const privacyPolicyLink = translations.find(item => item.key === 'privacy.policy.detail.link');
-                 privacyPolicyLink && $('.privacy-policy-link').text(privacyPolicyLink.value);
+                const privacyPolicyLink = translations.find(item => item.key === 'privacy.policy.detail.link');
+                privacyPolicyLink && $('.privacy-policy-link').text(privacyPolicyLink.value);
 
-                 const termConditionLink = translations.find(item => item.key === 'term.of.service.detail.link');
-                 termConditionLink && $('.term-condition-link').text(termConditionLink.value);
+                const termConditionLink = translations.find(item => item.key === 'term.of.service.detail.link');
+                termConditionLink && $('.term-condition-link').text(termConditionLink.value);
 
-                 const accept = translations.find(item => item.key === 'term.of.service.accept');
-                 submit && $('.btn-accept').attr('value', accept.value);
+                const accept = translations.find(item => item.key === 'term.of.service.accept');
+                accept && $('.btn-accept').attr('value', accept.value);
+
+                const mfaAskToSetupTitle = translations.find(item => item.key === 'ask.otp.configuration.title');
+                mfaAskToSetupTitle && $('.ask-otp-configuration-title').text(mfaAskToSetupTitle.value);
+
+                const mfaAskToSetupDescription = translations.find(item => item.key === 'ask.otp.configuration.description');
+                mfaAskToSetupDescription && $('.ask-otp-configuration-description').text(mfaAskToSetupDescription.value);
+
+                const mfaSetupBtn = translations.find(item => item.key === 'ask.otp.configuration.setup.btn');
+                mfaSetupBtn && $('.ask-otp-configuration-setup-btn').text(mfaSetupBtn.value);
+
+                const mfaSkipBtn = translations.find(item => item.key === 'ask.otp.configuration.skip.btn');
+                mfaSkipBtn && $('.ask-otp-configuration-skip-btn').text(mfaSkipBtn.value);
+
+                const totpFormTitle = translations.find(item => item.key === 'totp.form.title');
+                totpFormTitle && $('.totp-form-title').text(totpFormTitle.value);
+
+                const totpStepInstallApp = translations.find(item => item.key === 'totp.step.install.app');
+                totpStepInstallApp && $('.totp-step-install-app').text(totpStepInstallApp.value);
+
+                const totpStepOpenApp = translations.find(item => item.key === 'totp.step.open.app');
+                totpStepOpenApp && $('.totp-step-open-app').text(totpStepOpenApp.value);
+
+                const totpStepConfigureApp = translations.find(item => item.key === 'totp.step.configure.app');
+                totpStepConfigureApp && $('.totp-step-configure-app').text(totpStepConfigureApp.value);
+
+                const totpStepFinishSetup = translations.find(item => item.key === 'totp.step.finish.setup');
+                totpStepFinishSetup && $('.totp-step-finish-setup').text(totpStepFinishSetup.value);
+
+                const modeManual = translations.find(item => item.key === 'mode.manual');
+                modeManual && $('#mode-manual').text(modeManual.value);
+
+                const modeBarcode = translations.find(item => item.key === 'mode.barcode');
+                modeBarcode && $('#mode-barcode').text(modeBarcode.value);
+
+                const totpStep4 = translations.find(item => item.key === 'totp.form.step4');
+                totpStep4 && $('#kc-totp-settings li:nth-child(3) p').text(totpStep4.value);
+
+                const oneTimeCode = translations.find(item => item.key === 'one.time.code');
+                oneTimeCode && $('#kc-totp-settings-form label').text(oneTimeCode.value);
+                oneTimeCode && $('.one-time-code').text(oneTimeCode.value);
+
+                const rememberThisDevice = translations.find(item => item.key === 'remember.this.device');
+                rememberThisDevice && $('.remember-this-device').text(rememberThisDevice.value);
             };
 
             $().ready(function () {
