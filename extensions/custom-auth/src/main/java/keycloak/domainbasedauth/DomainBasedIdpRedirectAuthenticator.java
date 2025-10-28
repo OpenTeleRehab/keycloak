@@ -8,22 +8,14 @@ import org.keycloak.models.RealmModel;
 import org.keycloak.models.UserModel;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 import org.jboss.logging.Logger;
 import jakarta.ws.rs.core.Response;
 
 public class DomainBasedIdpRedirectAuthenticator implements Authenticator {
     private static final Logger logger = Logger.getLogger(DomainBasedIdpRedirectAuthenticator.class);
-    private static final List<IdpMapping> IDP_MAPPINGS;
-
-    static {
-        String[] samlSuffixes = getMappedSuffix("KC_IDP_MAPPING_SAML");
-        String[] oidcSuffixes = getMappedSuffix("KC_IDP_MAPPING_OIDC");
-
-        IDP_MAPPINGS = Arrays.asList(
-            new IdpMapping("saml", samlSuffixes),
-            new IdpMapping("oidc", oidcSuffixes)
-        );
-    }
+    private static final List<IdpMapping> IDP_MAPPINGS = getMappedSuffix("KC_IDP_MAPPING");
 
     private static class IdpMapping {
         String alias;
@@ -104,8 +96,28 @@ public class DomainBasedIdpRedirectAuthenticator implements Authenticator {
     @Override
     public void close() {}
 
-    private static String[] getMappedSuffix(String var) {
+    private static List<IdpMapping> getMappedSuffix(String var) {
         String value = System.getenv(var);
-        return (value != null && !value.isEmpty()) ? value.split(",") : new String[]{};
+
+        if (value == null || value.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        List<IdpMapping> mappings = new ArrayList<>();
+        String[] entries = value.split(";");
+
+        for (String entry : entries) {
+            String[] parts = entry.split("::", 2);
+            if (parts.length != 2) {
+                continue;
+            }
+
+            String alias = parts[0].trim();
+            String[] suffixes = !parts[1].isEmpty() ? parts[1].split(",") : new String[]{};
+
+            mappings.add(new IdpMapping(alias, suffixes));
+        }
+
+        return mappings;
     }
 }
