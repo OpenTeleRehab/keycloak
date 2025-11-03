@@ -30,7 +30,8 @@ public class MfaPolicyAuthenticator implements Authenticator {
     @Override
     public void authenticate(AuthenticationFlowContext context) {
         UserModel user = context.getUser();
-        String mfaEnforcement = user.getFirstAttribute(mfaEnforcementAttr);
+        String mfaAttr = user.getFirstAttribute(mfaEnforcementAttr);
+        String mfaEnforcement = mfaAttr != null ? mfaAttr : mfaEnforcementDisable;
         boolean hasTotp = user.credentialManager().isConfiguredFor(OTPCredentialModel.TYPE);
         String skipMfaUntil = user.getFirstAttribute(skipMfaUntilAttr);
         String federatedDomainsEnv = System.getenv("FEDERATED_DOMAINS");
@@ -44,7 +45,7 @@ public class MfaPolicyAuthenticator implements Authenticator {
             boolean isFederated = Arrays.stream(federatedDomains)
                     .anyMatch(username::endsWith);
 
-            if (!isFederated) {
+            if (isFederated) {
                 context.success();
                 return;
             }

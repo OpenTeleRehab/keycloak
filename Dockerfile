@@ -5,6 +5,8 @@ COPY extensions/custom-auth/target/keycloak-auth-redirector-1.0.jar /opt/keycloa
 COPY extensions/custom-mfa/target/keycloak-mfa-1.0.jar /opt/keycloak/providers
 COPY extensions/custom-otp/target/keycloak-otp-1.0.jar /opt/keycloak/providers
 COPY extensions/keycloak-events/target/keycloak-events-0.47-SNAPSHOT.jar /opt/keycloak/providers
+COPY extensions/custom-mfa/target/keycloak-mfa-1.0.jar /opt/keycloak/providers
+COPY extensions/custom-otp/target/keycloak-otp-1.0.jar /opt/keycloak/providers
 COPY themes /opt/keycloak/themes
 
 RUN /opt/keycloak/bin/kc.sh build
