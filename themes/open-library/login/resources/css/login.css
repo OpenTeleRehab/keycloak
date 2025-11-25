@@ -58,3 +58,43 @@ a {
         min-height: 100vh;
     }
 }
+
+.action-col-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-checkbox {
+    width: 18px;
+    height: 18px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 15px;
+}
+
+.custom-label {
+    margin-bottom: 0;
+}
+
+.ask-otp-configuration-skip-btn {
+    background: none;
+    border: none;
+    font: inherit;
+    color: #0077C8;
+    outline: none;
+    box-shadow: none !important;
+    cursor: pointer;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.pf-m-error {
+    color: #c9190b;
+}
