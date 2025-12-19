@@ -24,6 +24,7 @@
             <div class="${properties.kcFormGroupClass!}">
                 <div class="${properties.kcLabelWrapperClass!}">
                     <label for="otp" class="${properties.kcLabelClass!} one-time-code">${msg("loginOtpOneTime")}</label>
+                    <small id="one-time-code-hint" class="form-text text-muted">${msg("oneTimeCodeHint")}</small>
                 </div>
 
             <div class="${properties.kcInputWrapperClass!}">

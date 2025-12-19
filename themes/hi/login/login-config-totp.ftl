@@ -8,12 +8,21 @@
             </center>
 
             <ol id="kc-totp-settings">
+                <#assign appLinks = {
+                    "totpAppGoogleName": "https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2",
+                    "totpAppMicrosoftAuthenticatorName": "https://www.microsoft.com/en-us/security/mobile-authenticator-app",
+                    "totpAppFreeOTPName": "https://freeotp.github.io/"
+                }>
                 <li>
-                    <p class="totp-step-install-app">${msg("loginTotpStep1")}</p>
+                    <p class="totp-step-install-app">${kcSanitize(msg("loginTotpStep1"))?no_esc}</p>
 
                     <ul id="kc-totp-supported-apps">
                         <#list totp.supportedApplications as app>
-                            <li>${msg(app)}</li>
+                            <li>
+                                <a href="${appLinks[app]!''}" target="_blank" rel="noopener">
+                                    ${msg(app)}
+                                </a>
+                            </li>
                         </#list>
                     </ul>
                 </li>
@@ -55,6 +64,7 @@
                 <div class="${properties.kcFormGroupClass!}">
                     <div class="${properties.kcInputWrapperClass!}">
                         <label for="totp" class="control-label">${msg("authenticatorCode")}</label> <span class="required">*</span>
+                        <small id="one-time-code-hint" class="form-text text-muted">${msg("oneTimeCodeHint")}</small>
                     </div>
                     <div class="${properties.kcInputWrapperClass!}">
                         <input type="text" id="totp" name="totp" autocomplete="one-time-code" class="${properties.kcInputClass!} w-full"
