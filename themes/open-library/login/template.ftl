@@ -131,7 +131,7 @@
                 totpFormTitle && $('.totp-form-title').text(totpFormTitle.value);
 
                 const totpStepInstallApp = translations.find(item => item.key === 'totp.step.install.app');
-                totpStepInstallApp && $('.totp-step-install-app').text(totpStepInstallApp.value);
+                totpStepInstallApp && $('.totp-step-install-app').html(totpStepInstallApp.value);
 
                 const totpStepOpenApp = translations.find(item => item.key === 'totp.step.open.app');
                 totpStepOpenApp && $('.totp-step-open-app').text(totpStepOpenApp.value);
@@ -154,6 +154,9 @@
                 const oneTimeCode = translations.find(item => item.key === 'one.time.code');
                 oneTimeCode && $('#kc-totp-settings-form label').text(oneTimeCode.value);
                 oneTimeCode && $('.one-time-code').text(oneTimeCode.value);
+
+                const oneTimeCodeHint = translations.find(item => item.key === 'one.time.code.hint');
+                oneTimeCodeHint && $('#one-time-code-hint').text(oneTimeCodeHint.value);
 
                 const rememberThisDevice = translations.find(item => item.key === 'remember.this.device');
                 rememberThisDevice && $('.remember-this-device').text(rememberThisDevice.value);
