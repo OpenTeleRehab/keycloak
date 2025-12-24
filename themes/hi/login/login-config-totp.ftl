@@ -63,8 +63,8 @@
             <form action="${url.loginAction}" class="${properties.kcFormClass!}" id="kc-totp-settings-form" method="post">
                 <div class="${properties.kcFormGroupClass!}">
                     <div class="${properties.kcInputWrapperClass!}">
-                        <label for="totp" class="control-label">${msg("authenticatorCode")}</label> <span class="required">*</span>
-                        <small id="one-time-code-hint" class="form-text text-muted">${msg("oneTimeCodeHint")}</small>
+                        <label for="totp" class="control-label" style="margin-bottom: 0;">${msg("authenticatorCode")}</label> <span class="required">*</span>
+                        <small id="one-time-code-hint" class="form-text text-muted" style="font-size: 14px; margin-bottom: 5px;">${msg("oneTimeCodeHint")}</small>
                     </div>
                     <div class="${properties.kcInputWrapperClass!}">
                         <input type="text" id="totp" name="totp" autocomplete="one-time-code" class="${properties.kcInputClass!} w-full"
