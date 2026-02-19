@@ -99,6 +99,9 @@
                         id="saveTOTPBtn" value="${msg("doSubmit")}"
                     />
                 </#if>
+                <p class="text-center mt-4">
+                    <a href="${url.loginUrl}" class="w-full back-to-login-page">${msg("doBackToLoginPage")}</a>
+                </p>
             </form>
         </div>
     </#if>
