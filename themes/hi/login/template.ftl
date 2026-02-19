@@ -142,6 +142,9 @@
                 const totpFormTitle = translations.find(item => item.key === 'totp.form.title');
                 totpFormTitle && $('.totp-form-title').text(totpFormTitle.value);
 
+                const backToLoginPage = translations.find(item => item.key === 'back_to.login.page');
+                backToLoginPage && $('.back-to-login-page').text(backToLoginPage.value);
+
                 const totpStepInstallApp = translations.find(item => item.key === 'totp.step.install.app');
                 totpStepInstallApp && $('.totp-step-install-app').html(totpStepInstallApp.value);
 
